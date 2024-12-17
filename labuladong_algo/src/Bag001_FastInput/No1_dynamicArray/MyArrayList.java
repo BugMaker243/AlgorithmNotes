@@ -136,6 +136,7 @@ public class MyArrayList<E> {
     private void resize(int newCap) {
         E[] temp = (E[]) new Object[newCap];
 
+        // size是真实的元素数量，不用担心索引越界，因为传入的newCap长度一定是合适的
         for (int i = 0; i < size; i++) {
             temp[i] = data[i];
         }
