@@ -118,6 +118,7 @@ public class T_MyPriorityQueue<T> {
     // 调整堆的大小
     @SuppressWarnings("unchecked")
     private void resize(int capacity) {
+        // 断言检查，一般在java开发阶段会使用，需要传入虚拟机参数启动断言检查，执行不通过会直接抛出错误停止虚拟机
         assert capacity > size;
         T[] temp = (T[]) new Object[capacity];
         for (int i = 0; i < size; i++) {
