@@ -14,7 +14,9 @@
 >
 > 看完知识点和讲解
 >
-> **未刷题**
+> 刷完第一次：2024.12.25
+>
+> **第二次刷题时间：2025.1.1 - 2025.1.3**
 
 
 
@@ -31,9 +33,22 @@
 | [2. 两数相加](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers) |
 | [445. 两数相加 II](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers-ii) |
 
-> 2024.12.23
+> 2024.12.25
 >
-> **未看知识点和讲解**
+> 已看知识点和讲解
 >
 > **未刷题**
 
+
+
+### 1.2.1 单链表的花式反转方法汇总
+
+[单链表的花式反转方法汇总 | labuladong 的算法笔记](https://labuladong.online/algo/data-structure/reverse-linked-list-recursion/)
+
+<img src="http://jason243.online/algorithm/labuladong_algo/121.png" />
+
+> 2024.12.26
+>
+> 已看知识点和讲解
+>
+> **未刷题**
