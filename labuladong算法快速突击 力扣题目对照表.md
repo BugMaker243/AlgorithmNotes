@@ -10,13 +10,11 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/111.png" />
 
-> 2024.12.23 
->
-> 看完知识点和讲解
+> 2024.12.23 看完知识点和讲解
 >
 > 刷完第一次：2024.12.25
 >
-> **第二次刷题时间：2025.1.1 - 2025.1.3**
+> **第二次刷题时间预计：2025.1.1 - 2025.1.3**
 
 
 
@@ -33,9 +31,7 @@
 | [2. 两数相加](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers) |
 | [445. 两数相加 II](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers-ii) |
 
-> 2024.12.25
->
-> 已看知识点和讲解
+> 2024.12.25 看完知识点和讲解
 >
 > **未刷题**
 
@@ -47,8 +43,18 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/121.png" />
 
-> 2024.12.26
+> 2024.12.26 看完知识点和讲解
 >
-> 已看知识点和讲解
+> **未刷题**
+
+
+
+### 1.2.2 如何判断回文链表
+
+[如何判断回文链表 | labuladong 的算法笔记](https://labuladong.online/algo/data-structure/palindrome-linked-list/)
+
+<img src="http://jason243.online/algorithm/labuladong_algo/122.png" />
+
+> 2024.12.27 看完知识点和讲解
 >
 > **未刷题**
