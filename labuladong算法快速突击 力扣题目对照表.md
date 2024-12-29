@@ -25,17 +25,17 @@
 | [82. 删除排序链表中的重复元素 II](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_remove-duplicates-from-sorted-list-ii) |
 | ------------------------------------------------------------ |
 | [1836. 从未排序的链表中移除重复元素](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_remove-duplicates-from-an-unsorted-linked-list) |
-| [264. 丑数 II](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_ugly-number-ii) <br />额外补充：<br /> -[1201. 丑数 III 🟠](https://leetcode.cn/problems/ugly-number-iii)<br />- [263. 丑数 🟢](https://leetcode.cn/problems/ugly-number)<br />- [313. 超级丑数 🟠](https://leetcode.cn/problems/super-ugly-number)<br />- [剑指 Offer 49. 丑数 🟠](https://leetcode.cn/problems/chou-shu-lcof) |
+| [264. 丑数 II](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_ugly-number-ii) <br>额外补充：<br> -[1201. 丑数 III ](https://leetcode.cn/problems/ugly-number-iii)（这道题用多链表合并做int数组会越界，换long或者越界检查都会超时，评论区给的解法是二分查找，后续学了再做）<br>- [263. 丑数 ](https://leetcode.cn/problems/ugly-number)<br>- [313. 超级丑数 ](https://leetcode.cn/problems/super-ugly-number)（这道题有一样的问题，但是换long或者越界检查不会超时，官方的做法也是多链表合并，他们把这种思想叫做“动态规划”） |
 | [378. 有序矩阵中第 K 小的元素](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_kth-smallest-element-in-a-sorted-matrix) |
-| [373. 查找和最小的 K 对数字](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_find-k-pairs-with-smallest-sums)<br>额外补充：[剑指 Offer II 061. 和最小的 k 个数对 🟠](https://leetcode.cn/problems/qn8gGX) |
-| [2. 两数相加](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers) |
+| [373. 查找和最小的 K 对数字](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_find-k-pairs-with-smallest-sums) |
+| [2. 两数相加](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers)<br>额外补充：[67. 二进制求和 ](https://leetcode.cn/problems/add-binary) |
 | [445. 两数相加 II](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/#slug_add-two-numbers-ii) |
 
 > 2024.12.25 看完知识点和讲解
 >
-> **题没刷完，写到373题，还剩三题，额外补充题都没写**
+> 刷完第一次：2024.12.29
 >
-> **写的很烂，写完之后第二次刷题间隔不要太长**
+> **第二次刷题时间预计：2025.1.1 - 2025.1.3**
 
 
 
