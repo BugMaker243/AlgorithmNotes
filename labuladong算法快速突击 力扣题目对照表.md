@@ -18,6 +18,8 @@
 
 
 
+## 1.2 回文与反转
+
 ### 1.1.2 【强化练习】链表双指针经典习题
 
 [【强化练习】链表双指针经典习题](https://labuladong.online/algo/problem-set/linkedlist-two-pointers/)
@@ -60,3 +62,20 @@
 > 2024.12.27 看完知识点和讲解
 >
 > **未刷题**
+
+
+
+# 2.数组
+
+## 2.1 双指针
+
+### 2.1.1 双指针技巧秒杀七道数组题目
+
+> 主要分为快慢指针和左右指针
+
+<img src="http://jason243.online/algorithm/labuladong_algo/211.png" />
+
+> 2025.1.2 看完知识点和讲解
+>
+> **未刷题**
+
