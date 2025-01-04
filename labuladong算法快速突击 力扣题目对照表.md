@@ -79,3 +79,22 @@
 >
 > **未刷题**
 
+
+
+### 2.1.2 【强化练习】数组双指针经典习题
+
+| 1    | [80. 删除有序数组中的重复项 II](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_remove-duplicates-from-sorted-array-ii) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [125. 验证回文串](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_valid-palindrome) |
+| 3    | [75. 颜色分类](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_sort-colors) |
+| 4    | [88. 合并两个有序数组](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_merge-sorted-array) |
+| 5    | [977. 有序数组的平方](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_squares-of-a-sorted-array) |
+| 6    | [360. 有序转化数组](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_sort-transformed-array) |
+| 7    | [1329. 将矩阵按对角线排序](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_sort-the-matrix-diagonally) |
+| 8    | [1260. 二维网格迁移](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_shift-2d-grid) |
+| 9    | [867. 转置矩阵](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_transpose-matrix) |
+| 10   | [14. 最长公共前缀](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_longest-common-prefix) |
+
+> 看到第六题，还剩4题没看
+>
+> 剩下的都是二维数组
