@@ -95,6 +95,79 @@
 | 9    | [867. 转置矩阵](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_transpose-matrix) |
 | 10   | [14. 最长公共前缀](https://labuladong.online/algo/problem-set/array-two-pointers/#slug_longest-common-prefix) |
 
-> 看到第六题，还剩4题没看
+> 2025.1.5 看完知识点和讲解
 >
-> 剩下的都是二维数组
+> **未刷题**
+
+
+
+## 2.2滑动窗口
+
+### 2.2.1 滑动窗口算法核心代码模板
+
+<img src="http://jason243.online/algorithm/labuladong_algo/221.png" />
+
+> 还没看
+
+
+
+### 2.2.2 【强化练习】滑动窗口算法经典习题
+
+| 1    | [1658. 将 x 减到 0 的最小操作数](https://labuladong.online/algo/problem-set/sliding-window/#slug_minimum-operations-to-reduce-x-to-zero) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [713. 乘积小于 K 的子数组](https://labuladong.online/algo/problem-set/sliding-window/#slug_subarray-product-less-than-k) |
+| 3    | [1004. 最大连续1的个数 III](https://labuladong.online/algo/problem-set/sliding-window/#slug_max-consecutive-ones-iii) |
+| 4    | [340. 至多包含 K 个不同字符的最长子串](https://labuladong.online/algo/problem-set/sliding-window/#slug_longest-substring-with-at-most-k-distinct-characters) |
+| 5    | [424. 替换后的最长重复字符](https://labuladong.online/algo/problem-set/sliding-window/#slug_longest-repeating-character-replacement) |
+| 6    | [219. 存在重复元素 II](https://labuladong.online/algo/problem-set/sliding-window/#slug_contains-duplicate-ii) |
+| 7    | [220. 存在重复元素 III](https://labuladong.online/algo/problem-set/sliding-window/#slug_contains-duplicate-iii) |
+| 8    | [209. 长度最小的子数组](https://labuladong.online/algo/problem-set/sliding-window/#slug_minimum-size-subarray-sum) |
+| 9    | [395. 至少有 K 个重复字符的最长子串](https://labuladong.online/algo/problem-set/sliding-window/#slug_longest-substring-with-at-least-k-repeating-characters) |
+
+> 2025.1.5 看完知识点和讲解
+>
+> **未刷题**
+
+
+
+## 2.3 二分搜索
+
+### 2.3.1 二分搜索算法核心代码模板
+
+<img src="http://jason243.online/algorithm/labuladong_algo/231.png" />
+
+> 还没看
+
+
+
+### 2.3.2 实际运用二分搜索时的思维框架
+
+<img src="http://jason243.online/algorithm/labuladong_algo/232.png" />
+
+> 还没看
+
+
+
+## 2.4 小而美的算法技巧
+
+### 2.4.1 小而美的算法技巧：前缀和数组
+
+<img src="http://jason243.online/algorithm/labuladong_algo/241.png" />
+
+> 还没看
+
+
+
+### 2.4.2 小而美的算法技巧：差分数组
+
+<img src="http://jason243.online/algorithm/labuladong_algo/242.png" />
+
+> 还没看
+
+
+
+### 2.4.3 二维数组的花式遍历技巧
+
+<img src="http://jason243.online/algorithm/labuladong_algo/243.png" />
+
+> 还没看
