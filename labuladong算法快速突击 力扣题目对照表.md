@@ -124,9 +124,7 @@
 | 8    | [209. 长度最小的子数组](https://labuladong.online/algo/problem-set/sliding-window/#slug_minimum-size-subarray-sum) |
 | 9    | [395. 至少有 K 个重复字符的最长子串](https://labuladong.online/algo/problem-set/sliding-window/#slug_longest-substring-with-at-least-k-repeating-characters) |
 
-> 2025.1.5 看完知识点和讲解
->
-> **未刷题**
+> 还没看
 
 
 
