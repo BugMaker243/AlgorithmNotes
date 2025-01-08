@@ -146,7 +146,11 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/232.png" />
 
-> 还没看
+> 代码模板总结笔记见同级目录下文件 "labuladong-数组二分查找代码模板.md"
+>
+> 2025.1.8 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -173,3 +177,98 @@
 <img src="http://jason243.online/algorithm/labuladong_algo/243.png" />
 
 > 还没看
+
+
+
+# 3.队列/栈
+
+## 3.1 简单的队列与栈
+
+### 3.1.1 队列实现栈以及栈实现队列
+
+<img src="http://jason243.online/algorithm/labuladong_algo/311.png" />
+
+> 还没看
+
+
+
+### 3.1.2 【强化练习】栈的经典习题
+
+| 1    | [71. 简化路径](https://labuladong.online/algo/problem-set/stack/#slug_simplify-path) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [143. 重排链表](https://labuladong.online/algo/problem-set/stack/#slug_reorder-list)<br>类似题目：[剑指 Offer II 026. 重排链表](https://leetcode.cn/problems/LGjMqU) |
+| 3    | [20. 有效的括号](https://labuladong.online/algo/problem-set/stack/#slug_valid-parentheses) |
+| 4    | [150. 逆波兰表达式求值](https://labuladong.online/algo/problem-set/stack/#slug_evaluate-reverse-polish-notation)<br>类似题目：[剑指 Offer II 036. 后缀表达式](https://leetcode.cn/problems/8Zf90G) |
+| 5    | [225. 用队列实现栈](https://labuladong.online/algo/problem-set/stack/#slug_implement-stack-using-queues)<br>类似题目：<br>[232. 用栈实现队列](https://leetcode.cn/problems/implement-queue-using-stacks)<br>[剑指 Offer 09. 用两个栈实现队列](https://leetcode.cn/problems/yong-liang-ge-zhan-shi-xian-dui-lie-lcof) |
+| 6    | [388. 文件的最长绝对路径](https://labuladong.online/algo/problem-set/stack/#slug_longest-absolute-file-path) |
+| 7    | [155. 最小栈](https://labuladong.online/algo/problem-set/stack/#slug_min-stack)<br/>类似题目：<br/>[239. 滑动窗口最大值](https://leetcode.cn/problems/sliding-window-maximum)<br>[剑指 Offer 59 - I. 滑动窗口的最大值](https://leetcode.cn/problems/hua-dong-chuang-kou-de-zui-da-zhi-lcof)<br>[剑指 Offer 30. 包含min函数的栈](https://leetcode.cn/problems/bao-han-minhan-shu-de-zhan-lcof) |
+| 8    | [895. 最大频率栈](https://labuladong.online/algo/problem-set/stack/#slug_maximum-frequency-stack) |
+
+> 还没看
+
+
+
+### 3.1.3 【强化练习】队列的经典习题
+
+| 1    | [362. 敲击计数器](https://labuladong.online/algo/problem-set/queue/#slug_design-hit-counter) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [933. 最近的请求次数](https://labuladong.online/algo/problem-set/queue/#slug_number-of-recent-calls)<br/>类似题目：[剑指 Offer II 042. 最近请求次数](https://leetcode.cn/problems/H8086Q) |
+| 3    | [346. 数据流中的移动平均值](https://labuladong.online/algo/problem-set/queue/#slug_moving-average-from-data-stream)<br/>相似题目：[剑指 Offer II 041. 滑动窗口的平均值](https://leetcode.cn/problems/qIsx9U) |
+| 4    | [622. 设计循环队列](https://labuladong.online/algo/problem-set/queue/#slug_design-circular-queue) |
+| 5    | [641. 设计循环双端队列](https://labuladong.online/algo/problem-set/queue/#slug_design-circular-deque) |
+| 6    | [1670. 设计前中后队列](https://labuladong.online/algo/problem-set/queue/#slug_design-front-middle-back-queue) |
+| 7    | [2073. 买票需要的时间](https://labuladong.online/algo/problem-set/queue/#slug_time-needed-to-buy-tickets) |
+
+> 还没看
+
+
+
+## 3.2 单调栈与单调队列
+
+### 3.2.1 单调栈算法模板解决三道例题
+
+<img src="http://jason243.online/algorithm/labuladong_algo/321.png" />
+
+> 还没看
+
+
+
+### 3.2.2 【强化练习】单调栈的几种变体及经典习题
+
+| 1    | [单调栈模板的变体](https://labuladong.online/algo/problem-set/monotonic-stack/#单调栈模板的变体) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [1019. 链表中的下一个更大节点](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_next-greater-node-in-linked-list) |
+| 3    | [1944. 队列中可以看到的人数](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_number-of-visible-people-in-a-queue) |
+| 4    | [1475. 商品折扣后的最终价格](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_final-prices-with-a-special-discount-in-a-shop) |
+| 5    | [901. 股票价格跨度](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_online-stock-span) |
+| 6    | [402. 移掉 K 位数字](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_remove-k-digits) |
+| 7    | [853. 车队](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_car-fleet) |
+| 8    | [581. 最短无序连续子数组](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_shortest-unsorted-continuous-subarray) |
+
+> 还没看
+
+
+
+### 3.2.3 单调队列结构解决滑动窗口问题
+
+<img src="http://jason243.online/algorithm/labuladong_algo/323.png" />
+
+> 还没看
+
+
+
+### 3.2.4 【强化练习】单调队列的通用实现及经典习题
+
+| 1    | [通用实现](https://labuladong.online/algo/problem-set/monotonic-queue/#通用实现) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [单调队列 + 滑动窗口](https://labuladong.online/algo/problem-set/monotonic-queue/#单调队列-滑动窗口) |
+| 3    | [1438. 绝对差不超过限制的最长连续子数组](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit) |
+| 4    | [862. 和至少为 K 的最短子数组](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_shortest-subarray-with-sum-at-least-k) |
+| 5    | [918. 环形子数组的最大和](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_maximum-sum-circular-subarray) |
+| 6    | [单调队列 + 动态规划（选学）](https://labuladong.online/algo/problem-set/monotonic-queue/#单调队列-动态规划-选学) |
+| 7    | [1696. 跳跃游戏 VI](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_jump-game-vi) |
+| 8    | [1425. 带限制的子序列和](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_constrained-subsequence-sum)<br/>类似题目：<br>[1696. 跳跃游戏 VI ](https://leetcode.cn/problems/jump-game-vi)<br>[209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum)<br>[剑指 Offer II 008. 和大于等于 target 的最短子数组](https://leetcode.cn/problems/2VG8Kg) |
+| 9    | [1429. 第一个唯一数字](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_first-unique-number) |
+
+> 还没看
+
