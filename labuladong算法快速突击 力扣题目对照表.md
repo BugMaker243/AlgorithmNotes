@@ -136,7 +136,11 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/231.png" />
 
-> 还没看
+> 代码模板总结笔记见同级目录下文件 "labuladong-数组二分查找代码模板.md"
+>
+> 2025.1.8 看完知识点和讲解
+>
+> **未刷题**
 
 
 
