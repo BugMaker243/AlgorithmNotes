@@ -101,13 +101,15 @@
 
 
 
-## 2.2滑动窗口
+## 2.2滑动窗口 - 还没看
 
 ### 2.2.1 滑动窗口算法核心代码模板
 
 <img src="http://jason243.online/algorithm/labuladong_algo/221.png" />
 
-> 还没看
+> 2025.1.9 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -124,7 +126,9 @@
 | 8    | [209. 长度最小的子数组](https://labuladong.online/algo/problem-set/sliding-window/#slug_minimum-size-subarray-sum) |
 | 9    | [395. 至少有 K 个重复字符的最长子串](https://labuladong.online/algo/problem-set/sliding-window/#slug_longest-substring-with-at-least-k-repeating-characters) |
 
-> 还没看
+> 2025.1.9 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -154,7 +158,7 @@
 
 
 
-## 2.4 小而美的算法技巧
+## 2.4 小而美的算法技巧 - 还没看
 
 ### 2.4.1 小而美的算法技巧：前缀和数组
 
@@ -180,7 +184,7 @@
 
 
 
-# 3.队列/栈
+# 3.队列/栈 - 还没看
 
 ## 3.1 简单的队列与栈
 
