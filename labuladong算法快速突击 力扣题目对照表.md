@@ -317,7 +317,7 @@
 
 
 
-## 3.2 单调栈与单调队列
+## 3.2 单调栈与单调队列 （1天）
 
 单调栈和单调队列是基于栈和队列的两种变体，它们能够解决一些特殊的问题，需要掌握。
 
@@ -390,7 +390,7 @@
 
 
 
-# 4. [二叉树](https://labuladong.online/algo/intro/quick-learning-plan/#二叉树-1)
+# 4. [二叉树](https://labuladong.online/algo/intro/quick-learning-plan/#二叉树-1) （2天）
 
 所有递归算法的本质上都是二叉树的遍历，而且二叉树算法经常出现在面试/笔试中，所以二叉树章节我多放几篇文章，希望大家认真学习理解，亲自动手实践。
 
@@ -441,7 +441,7 @@
 
 
 
-# 5. [二叉搜索树](https://labuladong.online/algo/intro/quick-learning-plan/#二叉搜索树-1)
+# 5. [二叉搜索树](https://labuladong.online/algo/intro/quick-learning-plan/#二叉搜索树-1)（1天）
 
 二叉搜索树是特殊的二叉树，你就记住它的特点是「左小右大」，好好利用这个特点，来优化二叉树的遍历过程。
 
@@ -458,7 +458,7 @@
 
 
 
-# 6. [数据结构设计](https://labuladong.online/algo/intro/quick-learning-plan/#数据结构设计-1)
+# 6. [数据结构设计](https://labuladong.online/algo/intro/quick-learning-plan/#数据结构设计-1)（1天）
 
 LRU 是经典的数据结构设计问题，必须掌握；LFU 难度更大一些，可以作为选学。
 
@@ -483,7 +483,7 @@ LRU 是经典的数据结构设计问题，必须掌握；LFU 难度更大一些
 
 
 
-# 7. [图算法](https://labuladong.online/algo/intro/quick-learning-plan/#图算法)
+# 7. [图算法](https://labuladong.online/algo/intro/quick-learning-plan/#图算法)（2天）
 
 环检测、拓扑排序、二分图判定是经典的图算法，本质上就是对图的遍历，并不难掌握。
 
@@ -524,7 +524,7 @@ Dijkstra 最短路径算法属于经典图论算法，需要掌握。它的本�
 
 
 
-# 8. [DFS/回溯算法](https://labuladong.online/algo/intro/quick-learning-plan/#dfs-回溯算法-1)
+# 8. [DFS/回溯算法](https://labuladong.online/algo/intro/quick-learning-plan/#dfs-回溯算法-1)（2天）
 
 回溯算法是一种纯粹的暴力穷举算法，必须掌握。
 
@@ -577,7 +577,7 @@ Dijkstra 最短路径算法属于经典图论算法，需要掌握。它的本�
 
 
 
-# 9. [BFS 算法](https://labuladong.online/algo/intro/quick-learning-plan/#bfs-算法-1)
+# 9. [BFS 算法](https://labuladong.online/algo/intro/quick-learning-plan/#bfs-算法-1)（1天）
 
 BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树的层序遍历，适合解决最短路径问题。
 
@@ -610,7 +610,7 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 
 
 
-# 10. [动态规划](https://labuladong.online/algo/intro/quick-learning-plan/#动态规划-1)
+# 10. [动态规划](https://labuladong.online/algo/intro/quick-learning-plan/#动态规划-1)（2天）
 
 动态规划本质上也是暴力穷举，只不过有些问题的穷举过程中存在重叠子问题，所以可以通过备忘录进行优化，对于这类算法，我们通常称为动态规划算法。
 
@@ -644,7 +644,7 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 
 
 
-# 11. [贪心算法](https://labuladong.online/algo/intro/quick-learning-plan/#贪心算法-1)
+# 11. [贪心算法](https://labuladong.online/algo/intro/quick-learning-plan/#贪心算法-1)（0.5天）
 
 一般的算法问题，需要暴力穷举所有解，从中找到最优解。
 
@@ -661,7 +661,7 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 
 
 
-# 12. [分治算法](https://labuladong.online/algo/intro/quick-learning-plan/#分治算法-1)
+# 12. [分治算法](https://labuladong.online/algo/intro/quick-learning-plan/#分治算法-1)（0.5天）
 
 有一部分算法问题，分而治之会有更高的效率，下面这篇分治算法教程所讲的例题是前面讲过的一道链表题目。
 
@@ -673,7 +673,7 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 
 
 
-# 13. [数学](https://labuladong.online/algo/intro/quick-learning-plan/#数学)
+# 13. [数学](https://labuladong.online/algo/intro/quick-learning-plan/#数学)（1天）
 
 一般笔试中数学相关算法比较少，不过一些经典的技巧还是有必要掌握。
 
@@ -691,7 +691,7 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 
 
 
-# 14. [其他经典面试题](https://labuladong.online/algo/intro/quick-learning-plan/#其他经典面试题-1)
+# 14. [其他经典面试题](https://labuladong.online/algo/intro/quick-learning-plan/#其他经典面试题-1)（1天）
 
 这里列出一些经典算法题，它们本质上都是上面介绍的算法的运用。掌握了上面的所有算法后，一般难度的面试题你应该都能够解决了。
 
