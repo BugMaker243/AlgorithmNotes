@@ -313,7 +313,9 @@
 | 6    | [1670. 设计前中后队列](https://labuladong.online/algo/problem-set/queue/#slug_design-front-middle-back-queue) |
 | 7    | [2073. 买票需要的时间](https://labuladong.online/algo/problem-set/queue/#slug_time-needed-to-buy-tickets) |
 
-> 还没看
+> 2025.1.15 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -334,23 +336,19 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/321.png" />
 
-> 还没看
+> 2025.1.15 看完知识点和讲解
+>
+> **未刷题**
 
 
 
 ②解决滑动窗口问题
 
-| 1    | [单调栈模板的变体](https://labuladong.online/algo/problem-set/monotonic-stack/#单调栈模板的变体) |
-| ---- | ------------------------------------------------------------ |
-| 2    | [1019. 链表中的下一个更大节点](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_next-greater-node-in-linked-list) |
-| 3    | [1944. 队列中可以看到的人数](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_number-of-visible-people-in-a-queue) |
-| 4    | [1475. 商品折扣后的最终价格](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_final-prices-with-a-special-discount-in-a-shop) |
-| 5    | [901. 股票价格跨度](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_online-stock-span) |
-| 6    | [402. 移掉 K 位数字](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_remove-k-digits) |
-| 7    | [853. 车队](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_car-fleet) |
-| 8    | [581. 最短无序连续子数组](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_shortest-unsorted-continuous-subarray) |
+<img src="http://jason243.online/algorithm/labuladong_algo/323.png" />
 
-> 还没看
+> 2025.1.15 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -363,9 +361,19 @@
 > - [【强化练习】单调栈的几种变体及经典习题](https://labuladong.online/algo/problem-set/monotonic-stack/)
 > - [【强化练习】单调队列的通用实现及经典习题](https://labuladong.online/algo/problem-set/monotonic-queue/)
 
+
+
 ①单调栈几种变体
 
-<img src="http://jason243.online/algorithm/labuladong_algo/323.png" />
+| 1    | [单调栈模板的变体](https://labuladong.online/algo/problem-set/monotonic-stack/#单调栈模板的变体) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [1019. 链表中的下一个更大节点](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_next-greater-node-in-linked-list) |
+| 3    | [1944. 队列中可以看到的人数](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_number-of-visible-people-in-a-queue) |
+| 4    | [1475. 商品折扣后的最终价格](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_final-prices-with-a-special-discount-in-a-shop) |
+| 5    | [901. 股票价格跨度](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_online-stock-span) |
+| 6    | [402. 移掉 K 位数字](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_remove-k-digits) |
+| 7    | [853. 车队](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_car-fleet) |
+| 8    | [581. 最短无序连续子数组](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_shortest-unsorted-continuous-subarray) |
 
 > 还没看
 
