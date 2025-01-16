@@ -375,7 +375,9 @@
 | 7    | [853. 车队](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_car-fleet) |
 | 8    | [581. 最短无序连续子数组](https://labuladong.online/algo/problem-set/monotonic-stack/#slug_shortest-unsorted-continuous-subarray) |
 
-> 还没看
+> 2025.1.16 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -392,7 +394,9 @@
 | 8    | [1425. 带限制的子序列和](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_constrained-subsequence-sum)<br/>类似题目：<br>[1696. 跳跃游戏 VI ](https://leetcode.cn/problems/jump-game-vi)<br>[209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum)<br>[剑指 Offer II 008. 和大于等于 target 的最短子数组](https://leetcode.cn/problems/2VG8Kg) |
 | 9    | [1429. 第一个唯一数字](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_first-unique-number) |
 
-> 还没看
+> 2025.1.16 看到第五题 918 环形子数组
+>
+> **未刷题**
 
 
 
