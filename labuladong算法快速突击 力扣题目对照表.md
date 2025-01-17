@@ -394,7 +394,7 @@
 | 8    | [1425. 带限制的子序列和](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_constrained-subsequence-sum)<br/>类似题目：<br>[1696. 跳跃游戏 VI ](https://leetcode.cn/problems/jump-game-vi)<br>[209. 长度最小的子数组](https://leetcode.cn/problems/minimum-size-subarray-sum)<br>[剑指 Offer II 008. 和大于等于 target 的最短子数组](https://leetcode.cn/problems/2VG8Kg) |
 | 9    | [1429. 第一个唯一数字](https://labuladong.online/algo/problem-set/monotonic-queue/#slug_first-unique-number) |
 
-> 2025.1.16 看到第五题 918 环形子数组
+> 2025.1.16 后三题选学所以还没看
 >
 > **未刷题**
 
@@ -406,6 +406,8 @@
 
 所有递归算法的本质上都是二叉树的遍历，而且二叉树算法经常出现在面试/笔试中，所以二叉树章节我多放几篇文章，希望大家认真学习理解，亲自动手实践。
 
+## 4.1 二叉树核心框架1：核心纲领
+
 > 核心框架，建议用时 1 天
 >
 > 这篇核心纲领是一个总纲，主要有两部分内容：第一部分是如何在实际的算法题中理解二叉树的前中后序位置；第二部分是从二叉树的角度介绍回溯/动态规划等算法。
@@ -413,6 +415,16 @@
 > 现在你已经给了解二叉树遍历算法，所以请认真学习第一部分。第二部分降到的高级算法目前还没有学习，你只要有个印象就行了，等到后面学习了回溯/动态规划再回来看就会有更深的理解。
 >
 > - [二叉树系列算法核心纲领](https://labuladong.online/algo/essential-technique/binary-tree-summary/)
+
+<img src="http://jason243.online/algorithm/labuladong_algo/411.png" />
+
+> 2025.1.17 后三题选学所以还没看
+>
+> **未刷题**
+
+
+
+## 4.2 二叉树核心框架2：心法
 
 > 核心框架，建议用时 2~3 天
 >
@@ -422,10 +434,44 @@
 > - [二叉树心法（构造篇）](https://labuladong.online/algo/data-structure/binary-tree-part2/)
 > - [二叉树心法（序列化篇）](https://labuladong.online/algo/data-structure/serialize-and-deserialize-binary-tree/)
 
+### 4.2.1 思路篇
+
+<img src="http://jason243.online/algorithm/labuladong_algo/421.png" />
+
+
+
+### 4.2.2 构造篇
+
+<img src="http://jason243.online/algorithm/labuladong_algo/422.png" />
+
+
+
+### 4.2.3 序列化篇
+
+<img src="http://jason243.online/algorithm/labuladong_algo/423.png" />
+
+
+
+## 4.3 二叉树解题方法拓展
+
 > 习题，建议用时 1 天
 >
 > - [拓展：最近公共祖先系列解题框架](https://labuladong.online/algo/practice-in-action/lowest-common-ancestor-summary/)
 > - [拓展：如何计算完全二叉树的节点数](https://labuladong.online/algo/data-structure/count-complete-tree-nodes/)
+
+### 4.3.1 最近公共祖先阶梯框架
+
+<img src="http://jason243.online/algorithm/labuladong_algo/431.png" />
+
+
+
+### 4.3.2 计算完全二叉树节点数
+
+<img src="http://jason243.online/algorithm/labuladong_algo/432.png" />
+
+
+
+## 4.4 二叉树习题集
 
 > 习题，建议用时 2 天
 >
@@ -448,6 +494,64 @@
 > - [【强化练习】运用层序遍历解题 I](https://labuladong.online/algo/problem-set/binary-tree-level-i/)
 >
 > 如果你有时间和兴趣，可以自行查看其他习题章节进行练习。
+
+### 4.4.1 遍历思维解题
+
+| 1    | [257. 二叉树的所有路径](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_binary-tree-paths) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [129. 求根节点到叶节点数字之和](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_sum-root-to-leaf-numbers)<br>类似题目：[剑指 Offer II 049. 从根节点到叶节点的路径数字之和](https://leetcode.cn/problems/3Etpl5) |
+| 3    | [199. 二叉树的右视图](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_binary-tree-right-side-view)<br/>类似题目：<br>[662. 二叉树最大宽度 ](https://leetcode.cn/problems/maximum-width-of-binary-tree)<br>[剑指 Offer II 046. 二叉树的右侧视图](https://leetcode.cn/problems/WNC0Lk) |
+| 4    | [298. 二叉树最长连续序列](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_binary-tree-longest-consecutive-sequence) |
+| 5    | [988. 从叶结点开始的最小字符串](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_smallest-string-starting-from-leaf) |
+| 6    | [1022. 从根到叶的二进制数之和](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_sum-of-root-to-leaf-binary-numbers) |
+| 7    | [1457. 二叉树中的伪回文路径](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_pseudo-palindromic-paths-in-a-binary-tree) |
+| 8    | [1740. 找到二叉树中的距离](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_find-distance-in-a-binary-tree) |
+| 9    | [1257. 最小公共区域](https://labuladong.online/algo/problem-set/binary-tree-traverse-i/#slug_smallest-common-region) |
+
+
+
+
+
+
+
+### 4.4.2 分解思维解题
+
+| 1    | [105. 从前序与中序遍历序列构造二叉树](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_construct-binary-tree-from-preorder-and-inorder-traversal) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [106. 从中序与后序遍历序列构造二叉树](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_construct-binary-tree-from-inorder-and-postorder-traversal) |
+| 3    | [889. 根据前序和后序遍历构造二叉树](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_construct-binary-tree-from-preorder-and-postorder-traversal) |
+| 4    | [331. 验证二叉树的前序序列化](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_verify-preorder-serialization-of-a-binary-tree) |
+| 5    | [426. 将二叉搜索树转化为排序的双向链表](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_convert-binary-search-tree-to-sorted-doubly-linked-list) |
+| 6    | [894. 所有可能的满二叉树](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_all-possible-full-binary-trees) |
+| 7    | [998. 最大二叉树 II](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_maximum-binary-tree-ii) |
+| 8    | [1110. 删点成林](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_delete-nodes-and-return-forest) |
+| 9    | [1485. 克隆含随机指针的二叉树](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_clone-binary-tree-with-random-pointer) |
+| 10   | [1660. 纠正二叉树](https://labuladong.online/algo/problem-set/binary-tree-divide-i/#slug_correct-a-binary-tree) |
+
+
+
+
+
+
+
+### 4.4.3  层序遍历方法解题
+
+| 1    | [102. 二叉树的层序遍历](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_binary-tree-level-order-traversal) |
+| ---- | ------------------------------------------------------------ |
+| 2    | [107. 二叉树的层序遍历 II](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_binary-tree-level-order-traversal-ii) |
+| 3    | [103. 二叉树的锯齿形层序遍历](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_binary-tree-zigzag-level-order-traversal) |
+| 4    | [117. 填充每个节点的下一个右侧节点指针 II](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_populating-next-right-pointers-in-each-node-ii) |
+| 5    | [662. 二叉树最大宽度](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_maximum-width-of-binary-tree) |
+| 6    | [515. 在每个树行中找最大值](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_find-largest-value-in-each-tree-row) |
+| 7    | [637. 二叉树的层平均值](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_average-of-levels-in-binary-tree) |
+| 8    | [958. 二叉树的完全性检验](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_check-completeness-of-a-binary-tree) |
+| 9    | [1161. 最大层内元素和](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_maximum-level-sum-of-a-binary-tree) |
+| 10   | [1302. 层数最深叶子节点的和](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_deepest-leaves-sum) |
+| 11   | [1609. 奇偶树](https://labuladong.online/algo/problem-set/binary-tree-level-i/#slug_even-odd-tree) |
+
+
+
+
 
 
 
