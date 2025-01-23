@@ -418,7 +418,7 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/411.png" />
 
-> 2025.1.17 后三题选学所以还没看
+> 2025.1.17 看完知识点和讲解
 >
 > **未刷题**
 
@@ -438,17 +438,29 @@
 
 <img src="http://jason243.online/algorithm/labuladong_algo/421.png" />
 
+> 2025.1.23 看完知识点和讲解
+>
+> **未刷题**
+
 
 
 ### 4.2.2 构造篇
 
 <img src="http://jason243.online/algorithm/labuladong_algo/422.png" />
 
+> 2025.1.23 看完知识点和讲解
+>
+> **未刷题**
+
 
 
 ### 4.2.3 序列化篇
 
 <img src="http://jason243.online/algorithm/labuladong_algo/423.png" />
+
+> 2025.1.23 看完知识点和讲解
+>
+> **未刷题**
 
 
 
@@ -465,9 +477,13 @@
 
 
 
+
+
 ### 4.3.2 计算完全二叉树节点数
 
 <img src="http://jason243.online/algorithm/labuladong_algo/432.png" />
+
+
 
 
 
