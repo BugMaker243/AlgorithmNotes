@@ -858,6 +858,10 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 > - [base case 和备忘录的初始值怎么定？](https://labuladong.online/algo/dynamic-programming/memo-fundamental/)
 > - [最优子结构原理和 dp 数组遍历方向](https://labuladong.online/algo/dynamic-programming/faq-summary/)
 
+> 2025.2.10 看完知识点和讲解
+>
+> **未刷题**
+
 
 
 ## 10.3 动态规划习题1
