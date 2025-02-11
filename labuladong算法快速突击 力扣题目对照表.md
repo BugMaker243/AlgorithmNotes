@@ -783,7 +783,9 @@ Dijkstra 最短路径算法属于经典图论算法，需要掌握。它的本�
 > | [17. Letter Combinations of a Phone Number](https://leetcode.com/problems/letter-combinations-of-a-phone-number/?show=1) | [17. 电话号码的字母组合](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/?show=1) |  中  |
 > | [79. Word Search](https://leetcode.com/problems/word-search/?show=1) | [79. 单词搜索](https://leetcode.cn/problems/word-search/?show=1) |  中  |
 
-
+> **2025.2.11 刷完上述精选题单**
+>
+> 三个强化练习都没看没刷
 
 
 
@@ -905,7 +907,7 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 
 
 
-# 12. [分治算法](https://labuladong.online/algo/intro/quick-learning-plan/#分治算法-1)（0.5天）
+# 12. [分治算法](https://labuladong.online/algo/intro/quick-learning-plan/#分治算法-1) √
 
 有一部分算法问题，分而治之会有更高的效率，下面这篇分治算法教程所讲的例题是前面讲过的一道链表题目。
 
