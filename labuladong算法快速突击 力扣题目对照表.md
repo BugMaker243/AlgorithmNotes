@@ -828,7 +828,9 @@ BFS 也是一种暴力穷举算法，必须掌握。它的本质就是二叉树�
 > | [127. Word Ladder](https://leetcode.com/problems/word-ladder/?show=1) | [127. 单词接龙](https://leetcode.cn/problems/word-ladder/?show=1) |  难  |
 > | [365. Water and Jug Problem](https://leetcode.com/problems/water-and-jug-problem/?show=1) | [365. 水壶问题](https://leetcode.cn/problems/water-and-jug-problem/?show=1) |  中  |
 
-
+> **2025.2.11 刷完上述精选题单（重复度很高，有两三题没写）**
+>
+> 两个强化练习都没看没刷
 
 
 
