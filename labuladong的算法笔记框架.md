@@ -1786,7 +1786,7 @@ class Solution {
 }
 ```
 
-## [例题二、运送货物](https://labuladong.online/algo/frequency-interview/binary-search-in-action/#例题二、运送货物)
+### [例题二、运送货物](https://labuladong.online/algo/frequency-interview/binary-search-in-action/#例题二、运送货物)
 
 再看看力扣第 1011 题「[在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/)」：
 
@@ -1799,7 +1799,6 @@ class Solution {
 第 3 天：8
 第 4 天：9
 第 5 天：10
-
 请注意，货物必须按照给定的顺序装运，因此使用载重能力为 14 的船舶并将包装分成 (2, 3, 4, 5), (1, 6, 7), (8), (9), (10) 是不允许的。 
 </pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong class="example" style="font-weight: 600;">示例 2：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>weights = [3,2,2,4,1,4], days = 3
 <strong style="font-weight: 600;">输出：</strong>6
@@ -1817,94 +1816,7 @@ class Solution {
 第 4 天：1, 1
 </pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">提示：</strong></p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= days &lt;= weights.length &lt;= 5 * 10<sup>4</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= weights[i] &lt;= 500</code></li></ul></div><strong style="font-weight: 600; font-size: small;">题目来源：<a href="https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/" class="" target="_blank" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣 1011. 在 D 天内送达包裹的能力</a>。</strong></details>
 
-要在 `D` 天内按顺序运输完所有货物，货物不可分割，如何确定运输的最小载重呢？
-
-函数签名如下：
-
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
-
-
-
-```
-int shipWithinDays(int[] weights, int days);
-```
-
-和上一道题一样的，我们按照流程来就行：
-
-**1、确定 `x, f(x), target` 分别是什么，并写出函数 `f` 的代码**。
-
-题目问什么，什么就是自变量，也就是说船的运载能力就是自变量 `x`。
-
-运输天数和运载能力成反比，所以可以让 `f(x)` 计算 `x` 的运载能力下需要的运输天数，那么 `f(x)` 是单调递减的。
-
-函数 `f(x)` 的实现如下：
-
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
-
-
-
-```
-// 定义：当运载能力为 x 时，需要 f(x) 天运完所有货物
-// f(x) 随着 x 的增加单调递减
-int f(int[] weights, int x) {
-    int days = 0;
-    for (int i = 0; i < weights.length; ) {
-        // 尽可能多装货物
-        int cap = x;
-        while (i < weights.length) {
-            if (cap < weights[i]) break;
-            else cap -= weights[i];
-            i++;
-        }
-        days++;
-    }
-    return days;
-}
-```
-
-对于这道题，`target` 显然就是运输天数 `D`，我们要在 `f(x) == D` 的约束下，算出船的最小载重。
-
-**2、找到 `x` 的取值范围作为二分搜索的搜索区间，初始化 `left` 和 `right` 变量**。
-
-船的最小载重是多少？最大载重是多少？
-
-显然，船的最小载重应该是 `weights` 数组中元素的最大值，因为每次至少得装一件货物走，不能说装不下嘛。
-
-最大载重显然就是`weights` 数组所有元素之和，也就是一次把所有货物都装走。
-
-这样就确定了搜索区间 `[left, right)`：
-
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
-
-
-
-```
-int shipWithinDays(int[] weights, int days) {
-    int left = 0;
-    // 注意，right 是开区间，所以额外加一
-    int right = 1;
-    for (int w : weights) {
-        left = Math.max(left, w);
-        right += w;
-    }
-    
-    // ...
-}
-```
-
-**3、需要根据题目的要求，确定应该使用搜索左侧还是搜索右侧的二分搜索算法，写出解法代码**。
-
-现在我们确定了自变量 `x` 是船的载重能力，`f(x)` 是单调递减的函数，`target` 就是运输总天数限制 `D`，题目要我们计算船的最小载重，也就是 `x` 要尽可能小：
-
-![img](https://labuladong.online/algo/images/binary-search-in-action/5.jpeg)
-
-这就是搜索左侧边界的二分搜索嘛，结合上图就可写出二分搜索代码：
-
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
-
-
-
-```
+```java
 public int shipWithinDays(int[] weights, int days) {
     int left = 0;
     // 注意，right 是开区间，所以额外加一
@@ -1934,11 +1846,9 @@ public int shipWithinDays(int[] weights, int days) {
 
 到这里，这道题的解法也写出来了，我们合并一下多余的 if 分支，提高代码运行速度，最终代码如下：
 
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
 
 
-
-```
+```java
 class Solution {
     public int shipWithinDays(int[] weights, int days) {
         int left = 0;
@@ -1976,9 +1886,9 @@ class Solution {
 }
 ```
 
-<details data-v-4f290944="" id="div_capacity-to-ship-packages-within-d-days" class="hint-container details" style="background: var(--detail-c-bg); transition: background var(--vp-t-transform),color var(--vp-t-transform); display: block; margin-block: 0.75rem; padding: 1rem 0px 0px; border-radius: 0.5rem; margin: 1.3em 0px;"><summary data-v-4f290944="" style="position: relative; margin: -1rem 0px 0px; padding-block: 1em; padding-inline: 2.3em 1.5em; list-style: none; font-size: large; cursor: pointer; display: flex; align-items: center;"><svg data-v-4f290944="" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path data-v-4f290944="" fill="currentColor" d="m4.415 18.167l7.17-7.17l1.414 1.414l-7.17 7.17z" opacity="0.3"></path><path data-v-4f290944="" fill="currentColor" d="m20 7l.94-2.06L23 4l-2.06-.94L20 1l-.94 2.06L17 4l2.06.94zM8.5 7l.94-2.06L11.5 4l-2.06-.94L8.5 1l-.94 2.06L5.5 4l2.06.94zM20 12.5l-.94 2.06l-2.06.94l2.06.94l.94 2.06l.94-2.06L23 15.5l-2.06-.94zm-2.29-3.38l-2.83-2.83c-.2-.19-.45-.29-.71-.29s-.51.1-.71.29L2.29 17.46a.996.996 0 0 0 0 1.41l2.83 2.83c.2.2.45.3.71.3s.51-.1.71-.29l11.17-11.17c.39-.39.39-1.03 0-1.42M5.83 19.59l-1.41-1.41L11.59 11L13 12.41zM14.41 11L13 9.59l1.17-1.17l1.41 1.41z"></path></svg>&nbsp;<strong data-v-4f290944="" style="font-weight: 600;">算法可视化面板</strong><iconify-icon data-v-4f290944="" class="font-icon icon" mode="style" inline="true" icon="lets-icons:full-alt" width=".9em" height=".9em" style="display: inline-block; vertical-align: middle; margin-left: auto; margin-right: 10px;"></iconify-icon><iconify-icon data-v-4f290944="" class="font-icon icon" mode="style" inline="true" icon="ic:round-refresh" width="1em" height="1em" style="display: inline-block; vertical-align: middle; margin-right: 10px;"></iconify-icon><iconify-icon data-v-4f290944="" class="font-icon icon" mode="style" inline="true" icon="ic:outline-link" width="1em" height="1em" style="display: inline-block; vertical-align: middle;"></iconify-icon></summary><div data-v-4f290944="" class="resizable" style="width: 753.6px; max-width: 100%; height: 70vh; max-height: 70vh; overflow: hidden; resize: both;"><iframe data-v-4f290944="" title="algo-visualize panel" allow="clipboard-write; fullscreen;" id="iframe_capacity-to-ship-packages-within-d-days" src="https://labuladong.online/algo-visualize/leetcode/capacity-to-ship-packages-within-d-days/" width="100%" height="100%" loading="lazy" scrolling="auto" frameborder="0" style="overflow: auto;"></iframe></div></details>
 
-## [例题三、分割数组](https://labuladong.online/algo/frequency-interview/binary-search-in-action/#例题三、分割数组)
+
+### [例题三、分割数组](https://labuladong.online/algo/frequency-interview/binary-search-in-action/#例题三、分割数组)
 
 我们实操一下力扣第 410 题「[分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)」，难度为困难：
 
@@ -1992,44 +1902,7 @@ class Solution {
 </pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 3：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>nums = [1,4,4], k = 3
 <strong style="font-weight: 600;">输出：</strong>4
 </pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">提示：</strong></p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= nums.length &lt;= 1000</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">0 &lt;= nums[i] &lt;= 10<sup>6</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= k &lt;= min(50, nums.length)</code></li></ul></div><strong style="font-weight: 600; font-size: small;">题目来源：<a href="https://leetcode.cn/problems/split-array-largest-sum/" class="" target="_blank" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣 410. 分割数组的最大值</a>。</strong></details>
-
-函数签名如下：
-
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
-
-
-
-```
-int splitArray(int[] nums, int m);
-```
-
-这个题目有点类似前文一道经典动态规划题目 [高楼扔鸡蛋](https://labuladong.online/algo/dynamic-programming/egg-drop/)，题目比较绕，又是最大值又是最小值的。
-
-简单说，给你输入一个数组 `nums` 和数字 `m`，你要把 `nums` 分割成 `m` 个子数组。
-
-肯定有不止一种分割方法，每种分割方法都会把 `nums` 分成 `m` 个子数组，这 `m` 个子数组中肯定有一个和最大的子数组对吧。
-
-我们想要找一个分割方法，该方法分割出的最大子数组和是所有方法中最大子数组和最小的。
-
-请你的算法返回这个分割方法对应的最大子数组和。
-
-我滴妈呀，这个题目看了就觉得难的不行，完全没思路，这题怎么运用我们之前说套路，转化成二分搜索呢？
-
-**其实，这道题和上面讲的运输问题是一模一样的，不相信的话我给你改写一下题目**：
-
-你只有一艘货船，现在有若干货物，每个货物的重量是 `nums[i]`，现在你需要在 `m` 天内将这些货物运走，请问你的货船的最小载重是多少？
-
-这不就是刚才我们解决的力扣第 1011 题「[在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/)」吗？
-
-货船每天运走的货物就是 `nums` 的一个子数组；在 `m` 天内运完就是将 `nums` 划分成 `m` 个子数组；让货船的载重尽可能小，就是让所有子数组中最大的那个子数组元素之和尽可能小。
-
-所以这道题的解法直接复制粘贴运输问题的解法代码即可：
-
-java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
-
-
-
-```
+```java
 class Solution {
      public int splitArray(int[] nums, int m) {
         return shipWithinDays(nums, m);
@@ -2045,4 +1918,453 @@ class Solution {
 }
 ```
 
-本文就到这里，总结来说，如果发现题目中存在单调关系，就可以尝试使用二分搜索的思路来解决。搞清楚单调性和二分搜索的种类，通过分析和画图，就能够写出最终的代码。
+
+
+## 2.5 小而美的算法技巧：前缀和数组
+
+此页内容
+
+- [一维数组中的前缀和](https://labuladong.online/algo/data-structure/prefix-sum/#一维数组中的前缀和)
+- [二维矩阵中的前缀和](https://labuladong.online/algo/data-structure/prefix-sum/#二维矩阵中的前缀和)
+- [拓展延伸](https://labuladong.online/algo/data-structure/prefix-sum/#拓展延伸)
+
+本文讲解的例题
+
+|                           LeetCode                           |                             力扣                             | 难度 |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :--: |
+| [303. Range Sum Query - Immutable](https://leetcode.com/problems/range-sum-query-immutable/) | [303. 区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/) |  🟢   |
+| [304. Range Sum Query 2D - Immutable](https://leetcode.com/problems/range-sum-query-2d-immutable/) | [304. 二维区域和检索 - 矩阵不可变](https://leetcode.cn/problems/range-sum-query-2d-immutable/) |  🟠   |
+
+前置知识
+
+阅读本文前，你需要先学习：
+
+- [数组基础](https://labuladong.online/algo/data-structure-basic/array-basic/)
+
+前缀和技巧适用于快速、频繁地计算一个索引区间内的元素之和。
+
+### [一维数组中的前缀和](https://labuladong.online/algo/data-structure/prefix-sum/#一维数组中的前缀和)
+
+先看一道例题，力扣第 303 题「[区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/)」，让你计算数组区间内元素的和，这是一道标准的前缀和问题：
+
+<details class="hint-container details" open="" style="background: var(--detail-c-bg); transition: background var(--vp-t-transform),color var(--vp-t-transform); display: block; margin-block: 0.75rem; padding: 1.25rem 1rem; border-radius: 0.5rem;"><summary style="position: relative; margin: -1rem -1rem 0.5em; padding-block: 1em; padding-inline: 3em 1.5em; list-style: none; font-size: var(--hint-font-size); cursor: pointer;"><strong style="font-weight: 600;">303. 区域和检索 - 数组不可变</strong>&nbsp;|<span>&nbsp;</span><span><a target="_blank" href="https://leetcode.cn/problems/range-sum-query-immutable/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣<externallinkicon></externallinkicon></a><span>&nbsp;</span>|<span>&nbsp;</span></span><span><a target="_blank" href="https://leetcode.com/problems/range-sum-query-immutable/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">LeetCode<externallinkicon></externallinkicon></a><span>&nbsp;</span>|</span><span>&nbsp;</span>&nbsp;🟢</summary><div><p style="line-height: 1.6; overflow-wrap: break-word;">给定一个整数数组 &nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">nums</code>，处理以下类型的多个查询:</p><ol style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li>计算索引&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">left</code>&nbsp;和&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">right</code>&nbsp;（包含<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">left</code><span>&nbsp;</span>和<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">right</code>）之间的<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">nums</code><span>&nbsp;</span>元素的<span>&nbsp;</span><strong style="font-weight: 600;">和</strong><span>&nbsp;</span>，其中&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">left &lt;= right</code></li></ol><p style="line-height: 1.6; overflow-wrap: break-word;">实现<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">NumArray</code><span>&nbsp;</span>类：</p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">NumArray(int[] nums)</code><span>&nbsp;</span>使用数组<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">nums</code><span>&nbsp;</span>初始化对象</li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">int sumRange(int i, int j)</code><span>&nbsp;</span>返回数组<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">nums</code>&nbsp;中索引&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">left</code>&nbsp;和&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">right</code>&nbsp;之间的元素的<span>&nbsp;</span><strong style="font-weight: 600;">总和</strong><span>&nbsp;</span>，包含&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">left</code>&nbsp;和&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">right</code>&nbsp;两点（也就是&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">nums[left] + nums[left + 1] + ... + nums[right]</code>&nbsp;)</li></ul><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 1：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>
+["NumArray", "sumRange", "sumRange", "sumRange"]
+[[[-2, 0, 3, -5, 2, -1]], [0, 2], [2, 5], [0, 5]]
+<strong style="font-weight: 600;">输出：
+</strong>[null, 1, -1, -3]
+
+<strong style="font-weight: 600;">解释：</strong>
+NumArray numArray = new NumArray([-2, 0, 3, -5, 2, -1]);
+numArray.sumRange(0, 2); // return 1 ((-2) + 0 + 3)
+numArray.sumRange(2, 5); // return -1 (3 + (-5) + 2 + (-1)) 
+numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
+</pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">提示：</strong></p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= nums.length &lt;= 10<sup>4</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">-10<sup>5</sup>&nbsp;&lt;= nums[i] &lt;=&nbsp;10<sup>5</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">0 &lt;= i &lt;= j &lt; nums.length</code></li><li>最多调用<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">10<sup>4</sup></code><span>&nbsp;</span>次<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">sumRange</code><strong style="font-weight: 600;"><span>&nbsp;</span></strong>方法</li></ul></div><strong style="font-weight: 600; font-size: small;">题目来源：<a href="https://leetcode.cn/problems/range-sum-query-immutable/" target="_blank" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣 303. 区域和检索 - 数组不可变</a>。</strong></details>
+
+```java
+class NumArray {
+    // 前缀和数组
+    private int[] preSum;
+
+    // 输入一个数组，构造前缀和
+    public NumArray(int[] nums) {
+        // preSum[0] = 0，便于计算累加和
+        preSum = new int[nums.length + 1];
+        // 计算 nums 的累加和
+        for (int i = 1; i < preSum.length; i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
+        }
+    }
+
+    // 查询闭区间 [left, right] 的累加和
+    public int sumRange(int left, int right) {
+        return preSum[right + 1] - preSum[left];
+    }
+}
+```
+
+核心思路是我们 new 一个新的数组 `preSum` 出来，`preSum[i]` 记录 `nums[0..i-1]` 的累加和，看图 10=3+5+210=3+5+2：
+
+![img](https://labuladong.online/algo/images/difference/1.jpeg)
+
+看这个 `preSum` 数组，如果我想求索引区间 `[1, 4]` 内的所有元素之和，就可以通过 `preSum[5] - preSum[1]` 得出。
+
+这样，`sumRange` 函数仅仅需要做一次减法运算，避免了每次进行 for 循环调用，最坏时间复杂度为常数 O(1)*O*(1)。
+
+
+
+这个技巧在生活中运用也挺广泛的，比方说，你们班上有若干同学，每个同学有一个期末考试的成绩（满分 100 分），那么请你实现一个 API，输入任意一个分数段，返回有多少同学的成绩在这个分数段内。
+
+那么，你可以先通过计数排序的方式计算每个分数具体有多少个同学，然后利用前缀和技巧来实现分数段查询的 API：
+
+```java
+// 存储着所有同学的分数
+int[] scores = new int[]{...};
+// 试卷满分 100 分
+int[] count = new int[100 + 1];
+
+// 记录每个分数有几个同学
+for (int score : scores) {
+    count[score]++;
+}
+// 构造前缀和
+for (int i = 1; i < count.length; i++) {
+    count[i] = count[i] + count[i-1];
+}
+
+// 利用 count 这个前缀和数组进行分数段查询
+
+// 查询分数在 [80, 90] 之间的同学有多少人
+int result = count[90] - count[80];
+```
+
+接下来，我们看一看前缀和思路在二维数组中如何运用。
+
+
+
+### [二维矩阵中的前缀和](https://labuladong.online/algo/data-structure/prefix-sum/#二维矩阵中的前缀和)
+
+这是力扣第 304 题「[二维区域和检索 - 矩阵不可变](https://leetcode.cn/problems/range-sum-query-2d-immutable/)」，其实和上一题类似，上一题是让你计算子数组的元素之和，这道题让你计算二维矩阵中子矩阵的元素之和：
+
+<details class="hint-container details" open="" style="background: var(--detail-c-bg); transition: background var(--vp-t-transform),color var(--vp-t-transform); display: block; margin-block: 0.75rem; padding: 1.25rem 1rem; border-radius: 0.5rem;"><summary style="position: relative; margin: -1rem -1rem 0.5em; padding-block: 1em; padding-inline: 3em 1.5em; list-style: none; font-size: var(--hint-font-size); cursor: pointer;"><strong style="font-weight: 600;">304. 二维区域和检索 - 矩阵不可变</strong>&nbsp;|<span>&nbsp;</span><span><a target="_blank" href="https://leetcode.cn/problems/range-sum-query-2d-immutable/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣<externallinkicon></externallinkicon></a><span>&nbsp;</span>|<span>&nbsp;</span></span><span><a target="_blank" href="https://leetcode.com/problems/range-sum-query-2d-immutable/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">LeetCode<externallinkicon></externallinkicon></a><span>&nbsp;</span>|</span><span>&nbsp;</span>&nbsp;🟠</summary><div><p style="line-height: 1.6; overflow-wrap: break-word;"><big><small>给定一个二维矩阵<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">matrix</code>，</small></big>以下类型的多个请求：</p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><big><small>计算其子矩形范围内元素的总和，该子矩阵的<span>&nbsp;</span><strong style="font-weight: 600;">左上角</strong><span>&nbsp;</span>为<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">(row1,&nbsp;col1)</code><span>&nbsp;</span>，<strong style="font-weight: 600;">右下角</strong><span>&nbsp;</span>为<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">(row2,&nbsp;col2)</code><span>&nbsp;</span>。</small></big></li></ul><p style="line-height: 1.6; overflow-wrap: break-word;">实现<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">NumMatrix</code><span>&nbsp;</span>类：</p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">NumMatrix(int[][] matrix)</code>&nbsp;给定整数矩阵<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">matrix</code><span>&nbsp;</span>进行初始化</li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">int sumRegion(int row1, int col1, int row2, int col2)</code>&nbsp;返回<big><small><span>&nbsp;</span><strong style="font-weight: 600;">左上角</strong></small></big><big><small><span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">(row1,&nbsp;col1)</code>&nbsp;、<strong style="font-weight: 600;">右下角</strong>&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">(row2,&nbsp;col2)</code></small></big><span>&nbsp;</span>所描述的子矩阵的元素<span>&nbsp;</span><strong style="font-weight: 600;">总和</strong><span>&nbsp;</span>。</li></ul><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 1：</strong></p><p style="line-height: 1.6; overflow-wrap: break-word;"><img src="https://labuladong.online/algo/images/lc/1626332422-wUpUHT-image.png" style="max-width: 100%; width: 200px;"></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入:</strong> 
+["NumMatrix","sumRegion","sumRegion","sumRegion"]
+[[[[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]],[2,1,4,3],[1,1,2,2],[1,2,2,4]]
+<strong style="font-weight: 600;">输出:</strong> 
+[null, 8, 11, 12]
+
+<strong style="font-weight: 600;">解释:</strong>
+NumMatrix numMatrix = new NumMatrix([[3,0,1,4,2],[5,6,3,2,1],[1,2,0,1,5],[4,1,0,1,7],[1,0,3,0,5]]);
+numMatrix.sumRegion(2, 1, 4, 3); // return 8 (红色矩形框的元素总和)
+numMatrix.sumRegion(1, 1, 2, 2); // return 11 (绿色矩形框的元素总和)
+numMatrix.sumRegion(1, 2, 2, 4); // return 12 (蓝色矩形框的元素总和)
+</pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">提示：</strong></p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">m == matrix.length</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">n == matrix[i].length</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= m,&nbsp;n &lt;=&nbsp;200</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">-10<sup>5</sup>&nbsp;&lt;= matrix[i][j] &lt;= 10<sup>5</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">0 &lt;= row1 &lt;= row2 &lt; m</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">0 &lt;= col1 &lt;= col2 &lt; n</code></li><li>最多调用<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">10<sup>4</sup></code><span>&nbsp;</span>次&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">sumRegion</code><span>&nbsp;</span>方法</li></ul></div><strong style="font-weight: 600; font-size: small;">题目来源：<a href="https://leetcode.cn/problems/range-sum-query-2d-immutable/" target="_blank" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣 304. 二维区域和检索 - 矩阵不可变</a>。</strong></details>
+
+![img](https://labuladong.online/algo/images/presum/5.jpeg)
+
+而这四个大矩阵有一个共同的特点，就是左上角都是 `(0, 0)` 原点。
+
+那么做这道题更好的思路和一维数组中的前缀和是非常类似的，我们可以维护一个二维 `preSum` 数组，专门记录以原点为顶点的矩阵的元素之和，就可以用几次加减运算算出任何一个子矩阵的元素和：
+
+java 🟢cpp 🤖python 🤖go 🤖javascript 🤖
+
+
+
+```java
+class NumMatrix {
+    // preSum[i][j] 记录矩阵 [0, 0, i-1, j-1] 的元素和
+    private int[][] preSum;
+
+    public NumMatrix(int[][] matrix) {
+        int m = matrix.length, n = matrix[0].length;
+        if (m == 0 || n == 0) return;
+        // 构造前缀和矩阵
+        preSum = new int[m + 1][n + 1];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                // 计算每个矩阵 [0, 0, i, j] 的元素和
+                preSum[i][j] = preSum[i-1][j] + preSum[i][j-1] + matrix[i - 1][j - 1] - preSum[i-1][j-1];
+            }
+        }
+    }
+
+    // 计算子矩阵 [x1, y1, x2, y2] 的元素和
+    public int sumRegion(int x1, int y1, int x2, int y2) {
+        // 目标矩阵之和由四个相邻矩阵运算获得
+        return preSum[x2+1][y2+1] - preSum[x1][y2+1] - preSum[x2+1][y1] + preSum[x1][y1];
+    }
+}
+```
+
+
+
+## 2.6 小而美的算法技巧：差分数组
+
+此页内容
+
+- [算法实践](https://labuladong.online/algo/data-structure/diff-array/#算法实践)
+
+本文讲解的例题
+
+|                           LeetCode                           |                             力扣                             | 难度 |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :--: |
+| [1094. Car Pooling](https://leetcode.com/problems/car-pooling/) |   [1094. 拼车](https://leetcode.cn/problems/car-pooling/)    |  🟠   |
+| [1109. Corporate Flight Bookings](https://leetcode.com/problems/corporate-flight-bookings/) | [1109. 航班预订统计](https://leetcode.cn/problems/corporate-flight-bookings/) |  🟠   |
+| [370. Range Addition](https://leetcode.com/problems/range-addition/)🔒 | [370. 区间加法](https://leetcode.cn/problems/range-addition/)🔒 |  🟠   |
+
+前置知识
+
+阅读本文前，你需要先学习：
+
+- [数组基础](https://labuladong.online/algo/data-structure-basic/array-basic/)
+- [前缀和技巧](https://labuladong.online/algo/data-structure/prefix-sum/)
+
+[前缀和技巧](https://labuladong.online/algo/data-structure/prefix-sum/) 主要适用的场景是原始数组不会被修改的情况下，频繁查询某个区间的累加和，核心代码就是下面这段：
+
+```java
+class PrefixSum {
+    // 前缀和数组
+    private int[] preSum;
+
+    // 输入一个数组，构造前缀和
+    public PrefixSum(int[] nums) {
+        // preSum[0] = 0，便于计算累加和
+        preSum = new int[nums.length + 1];
+        // 计算 nums 的累加和
+        for (int i = 1; i < preSum.length; i++) {
+            preSum[i] = preSum[i - 1] + nums[i - 1];
+        }
+    }
+    
+    // 查询闭区间 [left, right] 的累加和
+    public int sumRange(int left, int right) {
+        return preSum[right + 1] - preSum[left];
+    }
+}
+```
+
+![img](https://labuladong.online/algo/images/difference/1.jpeg)
+
+
+
+本文讲一个和前缀和思想非常类似的算法技巧「差分数组」，**差分数组的主要适用场景是频繁对原始数组的某个区间的元素进行增减**。
+
+```java
+int[] diff = new int[nums.length];
+// 构造差分数组
+diff[0] = nums[0];
+for (int i = 1; i < nums.length; i++) {
+    diff[i] = nums[i] - nums[i - 1];
+}
+```
+
+![img](https://labuladong.online/algo/images/difference/2.jpeg)
+
+通过这个 `diff` 差分数组是可以反推出原始数组 `nums` 的，代码逻辑如下：
+
+```java
+int[] res = new int[diff.length];
+// 根据差分数组构造结果数组
+res[0] = diff[0];
+for (int i = 1; i < diff.length; i++) {
+    res[i] = res[i - 1] + diff[i];
+}
+```
+
+**这样构造差分数组 `diff`，就可以快速进行区间增减的操作**，如果你想对区间 `nums[i..j]` 的元素全部加 3，那么只需要让 `diff[i] += 3`，然后再让 `diff[j+1] -= 3` 即可：
+
+![img](https://labuladong.online/algo/images/difference/3.jpeg)
+
+**原理很简单，回想 `diff` 数组反推 `nums` 数组的过程，`diff[i] += 3` 意味着给 `nums[i..]` 所有的元素都加了 3，然后 `diff[j+1] -= 3` 又意味着对于 `nums[j+1..]` 所有元素再减 3，那综合起来，是不是就是对 `nums[i..j]` 中的所有元素都加 3 了**？
+
+### [算法实践](https://labuladong.online/algo/data-structure/diff-array/#算法实践)
+
+力扣第 370 题「[区间加法](https://leetcode.cn/problems/range-addition/)」直接考察了差分数组技巧，相当于给你输入一个长度为 `n` 的 `nums` 数组，其中的元素初始值都为 0，让你对其中的区间元素进行增减操作，最后返回最终的 `nums` 数组。
+
+```java
+class Solution {
+    public int[] getModifiedArray(int length, int[][] updates) {
+        // nums 初始化为全 0
+        int[] nums = new int[length];
+        // 构造差分解法
+        Difference df = new Difference(nums);
+        for (int[] update : updates) {
+            int i = update[0];
+            int j = update[1];
+            int val = update[2];
+            df.increment(i, j, val);
+        }
+        return df.result();
+    }
+
+    class Difference {
+        // 差分数组
+        private int[] diff;
+
+        public Difference(int[] nums) {
+            assert nums.length > 0;
+            diff = new int[nums.length];
+            // 构造差分数组
+            diff[0] = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                diff[i] = nums[i] - nums[i - 1];
+            }
+        }
+
+        // 给闭区间 [i, j] 增加 val（可以是负数）
+        public void increment(int i, int j, int val) {
+            diff[i] += val;
+            if (j + 1 < diff.length) {
+                diff[j + 1] -= val;
+            }
+        }
+
+        public int[] result() {
+            int[] res = new int[diff.length];
+            // 根据差分数组构造结果数组
+            res[0] = diff[0];
+            for (int i = 1; i < diff.length; i++) {
+                res[i] = res[i - 1] + diff[i];
+            }
+            return res;
+        }
+    }
+
+}
+```
+
+当然，实际的算法题可能需要我们对题目进行联想和抽象，不会这么直接地让你看出来要用差分数组技巧，这里看一下力扣第 1109 题「[航班预订统计](https://leetcode.cn/problems/corporate-flight-bookings/)」：
+
+<details class="hint-container details" open="" style="background: var(--detail-c-bg); transition: background var(--vp-t-transform),color var(--vp-t-transform); display: block; margin-block: 0.75rem; padding: 1.25rem 1rem; border-radius: 0.5rem; color: rgb(60, 60, 67); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, STHeiti, &quot;Microsoft YaHei&quot;, SimSun, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="position: relative; margin: -1rem -1rem 0.5em; padding-block: 1em; padding-inline: 3em 1.5em; list-style: none; font-size: var(--hint-font-size); cursor: pointer;"><strong style="font-weight: 600;">1109. 航班预订统计</strong>&nbsp;|<span>&nbsp;</span><span><a target="_blank" href="https://leetcode.cn/problems/corporate-flight-bookings/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣<externallinkicon></externallinkicon></a><span>&nbsp;</span>|<span>&nbsp;</span></span><span><a target="_blank" href="https://leetcode.com/problems/corporate-flight-bookings/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">LeetCode<externallinkicon></externallinkicon></a><span>&nbsp;</span>|</span><span>&nbsp;</span>&nbsp;🟠</summary><div><p style="line-height: 1.6; overflow-wrap: break-word;">这里有&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">n</code>&nbsp;个航班，它们分别从<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1</code><span>&nbsp;</span>到<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">n</code><span>&nbsp;</span>进行编号。</p><p style="line-height: 1.6; overflow-wrap: break-word;">有一份航班预订表&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">bookings</code><span>&nbsp;</span>，表中第&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">i</code>&nbsp;条预订记录&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">bookings[i] = [first<sub>i</sub>, last<sub>i</sub>, seats<sub>i</sub>]</code>&nbsp;意味着在从<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">first<sub>i</sub></code>&nbsp;到<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">last<sub>i</sub></code><span>&nbsp;</span>（<strong style="font-weight: 600;">包含</strong><span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">first<sub>i</sub></code><span>&nbsp;</span>和<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">last<sub>i</sub></code><span>&nbsp;</span>）的<span>&nbsp;</span><strong style="font-weight: 600;">每个航班</strong><span>&nbsp;</span>上预订了<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">seats<sub>i</sub></code>&nbsp;个座位。</p><p style="line-height: 1.6; overflow-wrap: break-word;">请你返回一个长度为<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">n</code><span>&nbsp;</span>的数组&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">answer</code>，里面的元素是每个航班预定的座位总数。</p><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 1：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>bookings = [[1,2,10],[2,3,20],[2,5,25]], n = 5
+<strong style="font-weight: 600;">输出：</strong>[10,55,45,25,25]
+<strong style="font-weight: 600;">解释：</strong>
+航班编号        1   2   3   4   5
+预订记录 1 ：   10  10
+预订记录 2 ：       20  20
+预订记录 3 ：       25  25  25  25
+总座位数：      10  55  45  25  25
+因此，answer = [10,55,45,25,25]
+</pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 2：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>bookings = [[1,2,10],[2,2,15]], n = 2
+<strong style="font-weight: 600;">输出：</strong>[10,25]
+<strong style="font-weight: 600;">解释：</strong>
+航班编号        1   2
+预订记录 1 ：   10  10
+预订记录 2 ：       15
+总座位数：      10  25
+因此，answer = [10,25]
+</pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">提示：</strong></p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= n &lt;= 2 * 10<sup>4</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= bookings.length &lt;= 2 * 10<sup>4</sup></code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">bookings[i].length == 3</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= first<sub>i</sub><span>&nbsp;</span>&lt;= last<sub>i</sub><span>&nbsp;</span>&lt;= n</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= seats<sub>i</sub><span>&nbsp;</span>&lt;= 10<sup>4</sup></code></li></ul></div><strong style="font-weight: 600; font-size: small;">题目来源：<a href="https://leetcode.cn/problems/corporate-flight-bookings/" target="_blank" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣 1109. 航班预订统计</a>。</strong></details>
+
+```java
+class Solution {
+    public int[] corpFlightBookings(int[][] bookings, int n) {
+        // nums 初始化为全 0
+        int[] nums = new int[n];
+        // 构造差分解法
+        Difference df = new Difference(nums);
+
+        for (int[] booking : bookings) {
+            // 注意转成数组索引要减一哦
+            int i = booking[0] - 1;
+            int j = booking[1] - 1;
+            int val = booking[2];
+            // 对区间 nums[i..j] 增加 val
+            df.increment(i, j, val);
+        }
+        // 返回最终的结果数组
+        return df.result();
+    }
+
+    class Difference {
+        // 差分数组
+        private int[] diff;
+
+        public Difference(int[] nums) {
+            assert nums.length > 0;
+            diff = new int[nums.length];
+            // 构造差分数组
+            diff[0] = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                diff[i] = nums[i] - nums[i - 1];
+            }
+        }
+
+        // 给闭区间 [i, j] 增加 val（可以是负数）
+        public void increment(int i, int j, int val) {
+            diff[i] += val;
+            if (j + 1 < diff.length) {
+                diff[j + 1] -= val;
+            }
+        }
+
+        public int[] result() {
+            int[] res = new int[diff.length];
+            // 根据差分数组构造结果数组
+            res[0] = diff[0];
+            for (int i = 1; i < diff.length; i++) {
+                res[i] = res[i - 1] + diff[i];
+            }
+            return res;
+        }
+    }
+
+}
+```
+
+
+
+还有一道很类似的题目是力扣第 1094 题「[拼车](https://leetcode.cn/problems/car-pooling/)」：
+
+<details class="hint-container details" open="" style="background: var(--detail-c-bg); transition: background var(--vp-t-transform),color var(--vp-t-transform); display: block; margin-block: 0.75rem; padding: 1.25rem 1rem; border-radius: 0.5rem; color: rgb(60, 60, 67); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, STHeiti, &quot;Microsoft YaHei&quot;, SimSun, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;; font-size: 17px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="position: relative; margin: -1rem -1rem 0.5em; padding-block: 1em; padding-inline: 3em 1.5em; list-style: none; font-size: var(--hint-font-size); cursor: pointer;"><strong style="font-weight: 600;">1094. 拼车</strong>&nbsp;|<span>&nbsp;</span><span><a target="_blank" href="https://leetcode.cn/problems/car-pooling/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣<externallinkicon></externallinkicon></a><span>&nbsp;</span>|<span>&nbsp;</span></span><span><a target="_blank" href="https://leetcode.com/problems/car-pooling/" rel="noopener noreferrer" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">LeetCode<externallinkicon></externallinkicon></a><span>&nbsp;</span>|</span><span>&nbsp;</span>&nbsp;🟠</summary><div><p style="line-height: 1.6; overflow-wrap: break-word;">车上最初有&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">capacity</code>&nbsp;个空座位。车&nbsp;<strong style="font-weight: 600;">只能&nbsp;</strong>向一个方向行驶（也就是说，<strong style="font-weight: 600;">不允许掉头或改变方向</strong>）</p><p style="line-height: 1.6; overflow-wrap: break-word;">给定整数&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">capacity</code>&nbsp;和一个数组<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">trips</code><span>&nbsp;</span>, &nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">trip[i] = [numPassengers<sub>i</sub>, from<sub>i</sub>, to<sub>i</sub>]</code>&nbsp;表示第<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">i</code><span>&nbsp;</span>次旅行有&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">numPassengers<sub>i</sub></code>&nbsp;乘客，接他们和放他们的位置分别是&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">from<sub>i</sub></code>&nbsp;和&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">to<sub>i</sub></code>&nbsp;。这些位置是从汽车的初始位置向东的公里数。</p><p style="line-height: 1.6; overflow-wrap: break-word;">当且仅当你可以在所有给定的行程中接送所有乘客时，返回&nbsp;<code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">true</code>，否则请返回<span>&nbsp;</span><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">false</code>。</p><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 1：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>trips = [[2,1,5],[3,3,7]], capacity = 4
+<strong style="font-weight: 600;">输出：</strong>false
+</pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">示例 2：</strong></p><pre style="text-align: left; direction: ltr; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: unset; tab-size: 4; hyphens: none; overflow: auto;"><strong style="font-weight: 600;">输入：</strong>trips = [[2,1,5],[3,3,7]], capacity = 5
+<strong style="font-weight: 600;">输出：</strong>true
+</pre><p style="line-height: 1.6; overflow-wrap: break-word;"><strong style="font-weight: 600;">提示：</strong></p><ul style="line-height: 1.6; overflow-wrap: break-word; padding-inline-start: 1.2em;"><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= trips.length &lt;= 1000</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">trips[i].length == 3</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= numPassengers<sub>i</sub>&nbsp;&lt;= 100</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">0 &lt;= from<sub>i</sub>&nbsp;&lt; to<sub>i</sub>&nbsp;&lt;= 1000</code></li><li><code style="font-family: var(--vp-font-mono); margin: 0px; padding: 3px 6px; border-radius: 4px; background: var(--detail-c-soft); font-size: 0.875em; overflow-wrap: break-word; transition: background-color var(--vp-t-color),color var(--vp-t-color);">1 &lt;= capacity &lt;= 10<sup>5</sup></code></li></ul></div><strong style="font-weight: 600; font-size: small;">题目来源：<a href="https://leetcode.cn/problems/car-pooling/" target="_blank" style="color: var(--vp-c-accent); font-weight: 500; text-decoration: none; overflow-wrap: break-word;">力扣 1094. 拼车</a>。</strong></details>
+
+```java
+class Solution {
+    public boolean carPooling(int[][] trips, int capacity) {
+        // 最多有 1000 个车站
+        int[] nums = new int[1001];
+        // 构造差分解法
+        Difference df = new Difference(nums);
+
+        for (int[] trip : trips) {
+            // 乘客数量
+            int val = trip[0];
+            // 第 trip[1] 站乘客上车
+            int i = trip[1];
+            // 第 trip[2] 站乘客已经下车，
+            // 即乘客在车上的区间是 [trip[1], trip[2] - 1]
+            int j = trip[2] - 1;
+            // 进行区间操作
+            df.increment(i, j, val);
+        }
+
+        int[] res = df.result();
+
+        // 客车自始至终都不应该超载
+        for (int i = 0; i < res.length; i++) {
+            if (capacity < res[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 差分数组工具类
+    class Difference {
+        // 差分数组
+        private int[] diff;
+
+        // 输入一个初始数组，区间操作将在这个数组上进行
+        public Difference(int[] nums) {
+            assert nums.length > 0;
+            diff = new int[nums.length];
+            // 根据初始数组构造差分数组
+            diff[0] = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                diff[i] = nums[i] - nums[i - 1];
+            }
+        }
+
+        // 给闭区间 [i, j] 增加 val（可以是负数）
+        public void increment(int i, int j, int val) {
+            diff[i] += val;
+            if (j + 1 < diff.length) {
+                diff[j + 1] -= val;
+            }
+        }
+
+        // 返回结果数组
+        public int[] result() {
+            int[] res = new int[diff.length];
+            // 根据差分数组构造结果数组
+            res[0] = diff[0];
+            for (int i = 1; i < diff.length; i++) {
+                res[i] = res[i - 1] + diff[i];
+            }
+            return res;
+        }
+    }
+
+}
+```
+
